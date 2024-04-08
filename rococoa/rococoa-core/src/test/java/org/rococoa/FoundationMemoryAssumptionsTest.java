@@ -88,7 +88,7 @@ public class FoundationMemoryAssumptionsTest {
         ID idPool = Foundation.sendReturnsID(Foundation.getClass("NSAutoreleasePool"), "new");
         assertRetainCount(1, idPool);
 
-        ID idNSString = Foundation.sendReturnsID(Foundation.getClass("NSString"), "stringWithCString:", "kowabunga");
+        ID idNSString = Foundation.sendReturnsID(Foundation.getClass("NSString"), "stringWithCString:encoding:", "kowabunga", StringEncoding.kCFStringEncodingUTF8.value);
         assertRetainCount(1, idNSString);
 
         // retain so that draining the pool doesn't free

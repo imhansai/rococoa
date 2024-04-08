@@ -19,7 +19,6 @@
 
 package org.rococoa;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.rococoa.cocoa.foundation.NSAutoreleasePool;
 import org.rococoa.test.RococoaTestCase;
@@ -69,7 +68,7 @@ public class FoundationRetainReleaseTest extends RococoaTestCase {
 
         ID idOfClass = Foundation.getClass("NSString");
         ID idOfString = Foundation.sendReturnsID(idOfClass, "alloc");
-        idOfString = Foundation.sendReturnsID(idOfString, "initWithCString:", "Hello world");
+        idOfString = Foundation.sendReturnsID(idOfString, "initWithCString:encoding:", "Hello world", StringEncoding.kCFStringEncodingUTF8.value);
         assertRetainCount(-1, idOfString);
 
         // show that it wasn't in the pool
